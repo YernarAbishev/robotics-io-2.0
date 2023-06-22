@@ -1,0 +1,51 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block title %}Видео материалы{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    <div class="lesson-block">
+        <div class="navigator">
+            <div class="container">
+                <span><a href="{% url 'homePage' %}">Главная</a> / Видео материалы</span>
+            </div>
+        </div>
+        <div class="container">
+            <h1>Видео материалы</h1>
+            <div class="table-responsive">
+                <table class="table table-sm table-striped table-bordered border-primary">
+                    <thead>
+                      <tr>
+                        <th>№</th>
+                        <th>Тема видео материала</th>
+                        <th>Действие</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for video in videos %}
+                      <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ video.lessonName }}</td>
+                        <td>
+                            <a href="{% url 'videoDetails' pk=video.pk %}" class="btn btn-primary w-100 d-block">Смотреть</a>
+                        </td>
+                      </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+{% else %}
+<div class="lesson-block" style="padding-top: 100px;">
+  <div class="container">
+    <div class="alert alert-warning alert-dismissible fade show" style="width: 50%; margin: 0 auto;" role="alert">
+      Чтобы работать с платформой, войдите или зарегистрируйтесь в систему.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endblock %}

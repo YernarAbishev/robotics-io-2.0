@@ -1,0 +1,35 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block title %}#{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<div class="row">
+        <div class="col-md-12">
+            <div class="border-blue m-3 p-5">
+                <h1>Мои оценки</h1>
+                {% for prog in studentProg %}
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <p>{{ prog.homeWork }}</p>
+                        <p>{{ prog.grade }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% else %}
+
+<section id="lessons" class="border-blue m-3 p-3">
+    <div class="container">
+
+        <div class="bg-blue-dark p-5">
+            Чтобы получить доступ к курсу войдити по <a href="#" class="author">ссылке</a>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+{% endblock %}

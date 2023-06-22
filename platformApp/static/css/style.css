@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap');
+* {
+    font-family: 'Ubuntu Mono', monospace;
+}
+.bg-blue-dark {
+    background-color: #213AD1;
+}
+ul, li {
+    list-style: none;
+}
+.link {
+    color: #213AD1;
+    text-decoration: none;
+    font-size: 16px;
+}
+.primary-outline-button {
+    padding: 0.5rem 1rem;
+    font-size: 20px;
+    font-weight: 400;
+    background-color: transparent;
+    border: 1px solid #213AD1;
+    color: #213AD1;
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+    margin-right: 1rem;
+    border-radius: 5px;
+}
+.primary-outline-button:hover {
+    background-color: #213AD1;
+    color: #fff;
+}
+.primary-button {
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    font-size: 20px;
+    font-weight: 400;
+    background-color: #213AD1;
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+    margin-right: 1rem;
+    border-radius: 5px;
+}
+.primary-button:hover {
+    background-color: #beb7f0;
+    color: #213AD1;
+}
+.logo {
+    width: 180px;
+}
+.img-container {
+    width: 100%;
+}
+.relative-block {
+    position: relative;
+    top: 150px;
+}
+.blue-dark-text {
+    color: #213AD1;
+    display: block;
+    font-weight: 900;
+}
+.menu-link {
+    display: block;
+    padding: 0 1rem;
+    font-size: 20px;
+    font-weight: 400;
+    color: #213AD1;
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+}
+.menu-link:hover {
+    color: #111111;
+}
+.menu-button {
+    display: block;
+    padding: 0 1rem;
+    font-size: 20px;
+    font-weight: 400;
+    background-color: transparent;
+    border: 1px solid #213AD1;
+    color: #213AD1;
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+    margin-right: 1rem;
+    border-radius: 5px;
+}
+.menu-button:hover {
+    background-color: #213AD1;
+    color: #fff;
+}
+.border-blue {
+    border-radius: 20px;
+    border: 1px solid #213AD1;
+}
+
+#main p, #about p {
+    text-align: justify;
+    margin-bottom: 30px;
+}
+#main h1 {
+    margin-bottom: 20px;
+}
+.footer p {
+    color: #fff;
+    margin: 0;
+    text-align: center;
+}
+.author {
+    color: #fff;
+    transition: 0.3s ease-in-out;
+}
+.author:hover {
+    color: #beb7f0;
+}
+.socials {
+    text-align: center;
+}
+.socials a {
+    color: #fff;
+    margin: 10px;
+    transition: 0.3s ease-in-out;
+    font-size: 32px;
+}
+.socials a:hover {
+    color: #beb7f0;
+}

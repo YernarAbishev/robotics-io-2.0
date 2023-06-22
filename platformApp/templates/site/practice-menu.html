@@ -1,0 +1,45 @@
+{% extends '../base.html' %}
+{% load static %}
+{% block title %}Меню{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    <div class="lesson-block">
+        <div class="navigator">
+            <div class="container">
+                <span><a href="{% url 'homePage' %}">Главная</a> / Практика</span>
+            </div>
+        </div>
+        <div class="container">
+            <h1>Практика</h1>
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="{% url 'homeWorks' %}" class="card bg-success" style="text-decoration: none;">
+                        <div class="card-body text-white text-center">
+                            <i class="fa-solid fa-file-code mb-3" style="font-size: 72px;"></i>
+                            <span class="d-block" style="font-size: 30px;">Практические задачи</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <a href="https://www.tinkercad.com/" target="_blank" class="card bg-info" style="text-decoration: none;">
+                        <div class="card-body text-white text-center">
+                            <i class="fa-solid fa-robot mb-3" style="font-size: 72px;"></i>
+                            <span class="d-block" style="font-size: 30px;">Работа с TinkerCAD</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% else %}
+<div class="lesson-block" style="padding-top: 100px;">
+  <div class="container">
+    <div class="alert alert-warning alert-dismissible fade show" style="width: 50%; margin: 0 auto;" role="alert">
+      Чтобы работать с платформой, войдите или зарегистрируйтесь в систему.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endblock %}

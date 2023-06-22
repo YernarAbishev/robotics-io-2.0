@@ -1,0 +1,51 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block title %}Лекции{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    <div class="lesson-block">
+        <div class="navigator">
+            <div class="container">
+                <span><a href="{% url 'homePage' %}">Главная</a> / Лекции</span>
+            </div>
+        </div>
+        <div class="container">
+            <h1>Лекции</h1>
+            <div class="table-responsive">
+                <table class="table table-sm table-striped table-bordered border-primary">
+                    <thead>
+                      <tr>
+                        <th class="text-center">№</th>
+                        <th>Тема урока</th>
+                        <th>Действие</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for lesson in lessons %}
+                      <tr>
+                        <td class="text-center">{{ forloop.counter }}</td>
+                        <td>{{ lesson.title }}</td>
+                        <td>
+                            <a href="{% url 'lessonDetail' pk=lesson.pk %}" class="btn btn-primary w-100 d-block">Читать</a>
+                        </td>
+                      </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+{% else %}
+<div class="lesson-block" style="padding-top: 100px;">
+  <div class="container">
+    <div class="alert alert-warning alert-dismissible fade show" style="width: 50%; margin: 0 auto;" role="alert">
+      Чтобы работать с платформой, войдите или зарегистрируйтесь в систему.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endblock %}

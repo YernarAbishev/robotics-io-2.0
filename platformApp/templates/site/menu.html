@@ -1,0 +1,61 @@
+{% extends '../base.html' %}
+{% load static %}
+{% block title %}Меню{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    <div class="lesson-block">
+        <div class="navigator">
+            <div class="container">
+                <span><a href="{% url 'homePage' %}">Главная</a> / Меню</span>
+            </div>
+        </div>
+        <div class="container">
+            <h1>Меню</h1>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <a href="{% url 'lessonsPage' %}" class="card bg-danger" style="text-decoration: none;">
+                        <div class="card-body text-white text-center">
+                            <i class="fa-solid fa-file-code mb-3" style="font-size: 72px;"></i>
+                            <span class="d-block" style="font-size: 30px;">Лекции</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <a href="{% url 'practiceMenu' %}" class="card bg-success" style="text-decoration: none;">
+                        <div class="card-body text-white text-center">
+                            <i class="fa-solid fa-file-code mb-3" style="font-size: 72px;"></i>
+                            <span class="d-block" style="font-size: 30px;">Практика</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <a href="{% url 'videoPage' %}" class="card bg-warning" style="text-decoration: none;">
+                        <div class="card-body text-white text-center">
+                            <i class="fa-solid fa-file-code mb-3" style="font-size: 72px;"></i>
+                            <span class="d-block" style="font-size: 30px;">Видео материалы</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <a href="{% url 'presentations' %}" class="card bg-info" style="text-decoration: none;">
+                        <div class="card-body text-white text-center">
+                            <i class="fa-solid fa-file-code mb-3" style="font-size: 72px;"></i>
+                            <span class="d-block" style="font-size: 30px;">Презентации</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% else %}
+<div class="lesson-block" style="padding-top: 100px;">
+  <div class="container">
+    <div class="alert alert-warning alert-dismissible fade show" style="width: 50%; margin: 0 auto;" role="alert">
+      Чтобы работать с платформой, войдите или зарегистрируйтесь в систему.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endblock %}

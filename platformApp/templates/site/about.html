@@ -1,0 +1,30 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block title %}О проекте{% endblock %}
+
+{% block content %}
+<div class="lesson-block">
+        <div class="navigator">
+            <div class="container">
+                <span><a href="{% url 'homePage' %}">Главная</a> / О проекте</span>
+            </div>
+        </div>
+        <div class="container">
+            <h1>О проекте</h1>
+            <div class="row">
+            <div class="col-md-6">
+                {% for c in content %}
+                <p style="text-align: justify;">{{ c }}</p>
+                {% endfor %}
+            </div>
+            <div class="col-md-6">
+                <div class="img-container">
+                    <img class="w-100 shadow-lg rounded" src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/c141ee76507163.5c6c38427adac.gif" alt="About" style="width: 100%;">
+                </div>
+            </div>
+        </div>
+
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,45 @@
+.main {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background-color: #3459E6;
+    color: #fff;
+}
+.main h1 {
+    font-weight: 400;
+}
+.main p {
+    text-align: justify;
+}
+.plus {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    color: #3459E6;
+}
+.plus h2 {
+    font-size: 45px;
+    color: #3459E6;
+}
+.navigator {
+    background-color: #f2f2f2;
+    padding: 20px 0;
+    margin-bottom: 30px;
+}
+.navigator a {
+    text-decoration: none;
+}
+.navigator span {
+    cursor: not-allowed;
+    color: #838383;
+}
+.lesson-block {
+    padding: 79px 0px 90px 0px;
+}
+.lesson-block h1 {
+    color: #3459E6;
+    margin-bottom: 30px;
+}
+.lesson-theme {
+    list-style-type: none;
+}

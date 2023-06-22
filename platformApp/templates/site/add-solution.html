@@ -1,0 +1,33 @@
+{% extends '../base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}{{ lesson.title }}{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<div class="row">
+        <div class="col-md-12">
+            <div class="border-blue m-3 p-5">
+                <h1 class="blue-dark-text">Отправить работу</h1>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <button class="primary-button">Отправить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% else %}
+
+<section id="lessons" class="border-blue m-3 p-3">
+    <div class="container">
+
+        <div class="bg-blue-dark p-5">
+            Чтобы получить доступ к курсу войдити по <a href="#" class="author">ссылке</a>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block title %}{{ homeWork.title }}{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    <div class="lesson-block">
+        <div class="navigator">
+            <div class="container">
+                <span><a href="{% url 'homePage' %}">Главная</a> / <a href="{% url 'homeWorks' %}">Видео материалы</a> / {{ homeWork.title }}</span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <h2 class="mb-3">{{ homeWork.title }}</h2>
+                            <p>
+                                {% autoescape off %}
+                                {{ homeWork.content }}
+                                {% endautoescape %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h2 class="mb-3">Задачи</h2>
+                            <ul class="lesson-theme">
+                                {% for hw in homeWorks %}
+                                <li><a href="{% url 'homeWorkDetail' pk=hw.pk %}" style="text-decoration: none;">{{ forloop.counter }}. {{ hw.title }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% else %}
+<div class="lesson-block" style="padding-top: 100px;">
+  <div class="container">
+    <div class="alert alert-warning alert-dismissible fade show" style="width: 50%; margin: 0 auto;" role="alert">
+      Чтобы работать с платформой, войдите или зарегистрируйтесь в систему.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+
+{% endblock %}

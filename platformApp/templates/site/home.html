@@ -1,0 +1,82 @@
+{% extends '../base.html' %}
+{% load static %}
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+    <div class="main">
+        <div class="container">
+            {% if messages %}
+            <div class="alert alert-info alert-dismissible fade show mb-5" style="width: 50%; margin: 0 auto;" role="alert">
+              {% for message in messages %}
+                {{ message }}
+              {% endfor %}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endif %}
+            <div class="row">
+                <div class="pt-3 col-md-6">
+                    <h1 class="text-white mb-3">Обучающая платформа по роботехнике iRobotics</h1>
+                    {% for c in content %}
+                    <p class="mb-3" style="text-align: justify;">{{ c }}</p>
+                    {% endfor %}
+                    <a href="{% url 'menuPage' %}" class="btn btn-light btn-lg">Начать</a>
+                    <a href="#plus" class="btn btn-light btn-lg">Плюсы</a>
+                </div>
+                <div class="col-md-6">
+                    <img class="w-100 rounded shadow-lg" src="{% static './newstyle/img/main.gif' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="plus" class="plus">
+        <div class="container">
+            <h2 class="mb-5">Плюсы iRobotics</h2>
+            <div class="row mb-5">
+                <div class="col-md-3">
+                    <div class="card shadow-lg text-white text-center bg-success mb-3">
+                        <div class="card-body">
+                            <i class="fa-solid fa-book mb-3" style="font-size: 72px;"></i>
+                            {% for c in content %}
+                            <h4 class="card-title">{{ c.firstBlock }}</h4>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card shadow-lg text-white text-center bg-danger mb-3">
+                        <div class="card-body">
+                            <i class="fa-solid fa-robot mb-3" style="font-size: 72px;"></i>
+                            {% for c in content %}
+                            <h4 class="card-title">{{ c.secondBlock }}</h4>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card shadow-lg text-white text-center bg-warning mb-3">
+                        <div class="card-body">
+                            <i class="fa-solid fa-universal-access mb-3" style="font-size: 72px;"></i>
+                            {% for c in content %}
+                            <h4 class="card-title">{{ c.thirdBlock }}</h4>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card shadow-lg text-white text-center bg-info mb-3">
+                        <div class="card-body">
+                            <i class="fa-solid fa-brain mb-3" style="font-size: 72px;"></i>
+                            {% for c in content %}
+                            <h4 class="card-title">{{ c.fourthBlock }}</h4>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <a href="{% url 'menuPage' %}" class="btn btn-primary btn-lg">Начать работу</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

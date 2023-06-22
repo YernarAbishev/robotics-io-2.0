@@ -1,0 +1,36 @@
+{% extends '../base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}Вход{% endblock %}
+
+{% block content %}
+  <div class="lesson-block">
+        <div class="navigator">
+            <div class="container">
+                <span><a href="{% url 'homePage' %}">Главная</a> / Вход в систему</span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h1 class="text-primary mb-3">Вход в систему</h1>
+                            <form method="post">
+                                {% csrf_token %}
+                                {{ form|crispy }}
+                                <button type="submit" class="btn btn-primary mb-4">Войти</button>
+                            </form>
+                            <p>Если у Вас нет учетной записи, пройдите по <a href="{% url 'signUp' %}" style="text-decoration: none;">ссылке</a></p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <img src="https://i.pinimg.com/originals/e3/63/e3/e363e38ceffaece60e00b87ee4286e08.gif" class="w-100 shadow-lg rounded" alt="">
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

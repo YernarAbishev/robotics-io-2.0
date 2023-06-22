@@ -1,0 +1,35 @@
+{% extends '../base.html' %}
+{% load static %}
+{% block title %}Профиль{% endblock %}
+
+{% block content %}
+    <div class="lesson-block">
+        <div class="navigator">
+            <div class="container">
+                <span><a href="{% url 'homePage' %}">Главная</a> / Профиль</span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="text-primary">Профиль</h1>
+                    <div class="card mb-4" style="width: 11rem;">
+                        <div class="card-body">
+                            <img src="https://media.tenor.com/arlZrN0YovkAAAAC/robot-smile.gif" style="width: 120px;" alt="">
+                        </div>
+                    </div>
+                    <h3 class="text-primary">{{ user.first_name }} {{ user.last_name }}</h3>
+                    <h3 class="text-primary">Логин: {{ user.username }}</h3>
+                    <h3 class="text-primary">E-mail: {{ user.email }}</h3>
+                    <h3 class="text-primary">Послденяя сессия: {{ user.last_login }}</h3>
+                    {% if user.is_superuser %}
+                    <a href="{% url 'admin:index' %}" class="btn btn-success">Админ панель</a>
+                    {% else %}
+                    <a href="{% url 'change_password' %}" class="btn btn-info">Сменить пароль</a>
+                    {% endif %}
+                    <a href="{% url 'logoutUser' %}" class="btn btn-danger">Выйти</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

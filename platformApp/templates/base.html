@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link href="https://vjs.zencdn.net/7.20.3/video-js.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static './newstyle/css/style.css' %}">
+    <link rel="stylesheet" href="{% static './newstyle/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+    .navbar-toggler {
+        background-color: #213AD1;
+        color: #fff;
+    }
+</style>
+<body>
+
+    <header class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+          <a class="navbar-brand" href="{% url 'homePage' %}"><img src="{% static './newstyle/img/logo.svg' %}" style="width: 42px; margin-right: 10px;" alt=""> <span style="position: relative; bottom: -2px;">iRobotics</span></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'homePage' %}">Главная</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'aboutPage' %}">О проекте</a>
+              </li>
+              {% if user.is_authenticated %}
+              <li class="nav-item dropdown">
+                <a class="nav-link " data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-user"></i> {{ user.username }}</a>
+                <div class="dropdown-menu">
+                  {% if user.is_superuser %}
+                  <a class="dropdown-item" href="{% url 'admin:index' %}">Панель администратора</a>
+                  {% endif %}
+                  <a class="dropdown-item" href="{% url 'profilePage' %}">Профиль</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="{% url 'logoutUser' %}">Выход</a>
+                </div>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'lessonsPage' %}">Лекции</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'practiceMenu' %}">Практика</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'videoPage' %}">Видео</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'presentations' %}">Презентации</a>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'logIn' %}">Вход</a>
+              </li>
+                <li class="nav-item">
+                <a class="nav-link active" href="{% url 'signUp' %}">Регистрация</a>
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+    </header>
+
+
+    {% block content %}
+    {% endblock %}
+
+
+    <footer class="py-3 my-4">
+        <div class="container">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item"><a href="{% url 'homePage' %}" class="nav-link px-2 text-primary">Главная</a></li>
+                {% if user.is_authenticated %}
+                <li class="nav-item"><a href="{% url 'lessonsPage' %}" class="nav-link px-2 text-primary">Лекции</a></li>
+                <li class="nav-item"><a href="{% url 'practiceMenu' %}" class="nav-link px-2 text-primary">Практика</a></li>
+                <li class="nav-item"><a href="{% url 'videoPage' %}" class="nav-link px-2 text-primary">Видео</a></li>
+                <li class="nav-item"><a href="{% url 'presentations' %}" class="nav-link px-2 text-primary">Презентации</a></li>
+                {% else %}
+                <li class="nav-item"><a href="{% url 'signUp' %}" class="nav-link px-2 text-primary">Регистрация</a></li>
+                <li class="nav-item"><a href="{% url 'logIn' %}" class="nav-link px-2 text-primary">Вход</a></li>
+                {% endif %}
+            </ul>
+            <p class="text-center text-primary">© 2023 iRobotics</p>
+        </div>
+    </footer>
+
+    <script src="https://vjs.zencdn.net/7.20.3/video.min.js"></script>
+    <script src="{% static './newstyle/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static './js/uploader.js' %}"></script>
+
+</body>
+
+</html>
